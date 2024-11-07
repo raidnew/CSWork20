@@ -1,0 +1,26 @@
+﻿@using CSWork20.Enities;
+
+<head>
+    <title>Задание SkillBox C# 19</title>
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="~/css/style.css">
+</head>
+
+<div class="table">
+    <div class="row">
+        <div class="cell">Имя</div>
+        <div class="cell">Фамилий</div>
+        <div class="cell">Отчество</div>
+        <div class="cell"></div>
+    </div>
+
+    @foreach (Contact contact in ViewBag.contacts)
+    {
+        <div class="row">
+            <div class="cell">@contact.FirstName</div>
+            <div class="cell">@contact.LastName</div>
+            <div class="cell">@contact.ThirdName</div>
+            <div class="cell"><a href="/PhoneBook/ContactsInfo/@contact.Id">Показать ID (@contact.Id)</a></div>
+        </div>
+    }
+
