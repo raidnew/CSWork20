@@ -1,0 +1,45 @@
+﻿@using CSWork20.Enities;
+<head>
+    <title>Задание SkillBox C# 19</title>
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="~/css/style.css">
+    <script src="~/js/script.js"></script>
+</head>
+
+<form method="POST" action="/PhoneBook/ContactEdit/">
+<div class="table">
+    <div class="row">
+        <div class="cell">ID</div>
+            <div class="cell">@ViewBag.contact.Id</div>
+    </div>
+    <input name="Id" type="hidden" value="@ViewBag.contact.Id" />
+    <div class="row">
+        <div class="cell">Имя</div>
+            <div class="cell"><input name="firstName" value="@ViewBag.contact.FirstName" /></div>
+    </div>
+    <div class="row">
+        <div class="cell">Фамилия</div>
+            <div class="cell"><input name="lastName" value="@ViewBag.contact.LastName" /></div>
+    </div>
+    <div class="row">
+        <div class="cell">Отчество</div>
+            <div class="cell"><input name="thirdName" value="@ViewBag.contact.ThirdName" /></div>
+    </div>
+    <div class="row">
+        <div class="cell">Телефон</div>
+            <div class="cell"><input name="phone" value="@ViewBag.contact.Phone" /></div>
+    </div>
+    <div class="row">
+        <div class="cell">Аддресс</div>
+            <div class="cell"><input name="address" value="@ViewBag.contact.Address" /></div>
+    </div>
+    <div class="row">
+        <div class="cell">Дескрипшен</div>
+            <div class="cell"><input name="desc" value="@ViewBag.contact.Desc" /></div>
+    </div>
+</div>
+
+<button action="submit">Редактировать</button>
+<br>
+<a href="/PhoneBook/ContactsList">Вернуться с списку</a>
+</form>

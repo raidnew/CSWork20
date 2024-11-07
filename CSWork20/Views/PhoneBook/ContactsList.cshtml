@@ -4,23 +4,31 @@
     <title>Задание SkillBox C# 19</title>
     <meta charset="utf-8">
     <link type="text/css" rel="stylesheet" href="~/css/style.css">
+    <script src="~/js/script.js"></script>
+
 </head>
 
 <div class="table">
     <div class="row">
+        <div class="cell">ID</div>
         <div class="cell">Имя</div>
         <div class="cell">Фамилий</div>
         <div class="cell">Отчество</div>
+        <div class="cell"></div>
         <div class="cell"></div>
     </div>
 
     @foreach (Contact contact in ViewBag.contacts)
     {
         <div class="row">
+            <div class="cell">@contact.Id</div>
             <div class="cell">@contact.FirstName</div>
             <div class="cell">@contact.LastName</div>
             <div class="cell">@contact.ThirdName</div>
-            <div class="cell"><a href="/PhoneBook/ContactsInfo/@contact.Id">Показать ID (@contact.Id)</a></div>
+            <div class="cell"><a href="/PhoneBook/ContactInfo/@contact.Id">Показать</a></div>
+            <div class="cell"><button onclick='javascript:removeContact("/PhoneBook/ContactRemove/", "@contact.Id")'>Удалить</button></div>
         </div>
     }
+</div>
 
+<a href="/PhoneBook/ContactAdding">Добавить контакт</a>
