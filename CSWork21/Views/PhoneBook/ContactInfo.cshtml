@@ -1,0 +1,43 @@
+﻿@using CSWork21.Enities;
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="table">
+    <div class="row">
+        <div class="cell">ID</div>
+            <div class="cell">@ViewBag.contact.Id</div>
+    </div>
+    <div class="row">
+        <div class="cell">Имя</div>
+            <div class="cell">@ViewBag.contact.FirstName</div>
+    </div>
+    <div class="row">
+        <div class="cell">Фамилия</div>
+            <div class="cell">@ViewBag.contact.LastName</div>
+    </div>
+    <div class="row">
+        <div class="cell">Отчество</div>
+            <div class="cell">@ViewBag.contact.ThirdName</div>
+    </div>
+    <div class="row">
+        <div class="cell">Телефон</div>
+            <div class="cell">@ViewBag.contact.Phone</div>
+    </div>
+    <div class="row">
+        <div class="cell">Аддресс</div>
+            <div class="cell">@ViewBag.contact.Address</div>
+    </div>
+    <div class="row">
+        <div class="cell">Дескрипшен</div>
+            <div class="cell">@ViewBag.contact.Desc</div>
+    </div>
+</div>
+
+
+<br>
+<a href="/PhoneBook/ContactEdit/@ViewBag.contact.Id">Редактировать</a>
+<br>
+
+<a href="/PhoneBook/ContactsList">Вернуться с списку</a>

@@ -1,25 +1,45 @@
-﻿using CSWork20.Contexts;
-using CSWork20.Enities;
+﻿using CSWork21.Contexts;
+using CSWork21.Data;
+using CSWork21.Enities;
+using CSWork21.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CSWork20.Controllers
+namespace CSWork21.Controllers
 {
+    [Authorize]
     public class PhoneBookController : Controller
     {
+        
+        private IPhoneBookEntries _phoneBookContext;
+
+        public PhoneBookController(IPhoneBookEntries phoneBookContext)
+        {
+            _phoneBookContext = phoneBookContext;
+        }
+
+        [AllowAnonymous]
         public IActionResult ContactsList()
         {
-            ViewBag.contacts = new PhoneBookContext().Contacts;
+            ViewBag.contacts = _phoneBookContext.GetContacts();
             return View();
         }
 
-        [HttpGet]
+        [HttpGet, AllowAnonymous]
         public IActionResult ContactInfo(int id)
         {
-            ViewBag.contact = new PhoneBookContext().GetContactByID(id);
+            ViewBag.contact = _phoneBookContext.GetContactByID(id);
             return View();
         }
 
-        [HttpPost]
+        [HttpGet, Authorize(Roles = "Administrator")]
+        public IActionResult ContactEdit(int id)
+        {
+            ViewBag.contact = _phoneBookContext.GetContactByID(id);
+            return View();
+        }
+
+        [HttpPost, Authorize(Roles = "Administrator")]
         public IActionResult ContactEdit(int id, string firstName, string lastName, string thirdName, string phone, string address, string desc)
         {
             Contact contact = new Contact();
@@ -30,11 +50,11 @@ namespace CSWork20.Controllers
             contact.Phone = phone;
             contact.Address = address;
             contact.Desc = desc;
-            new PhoneBookContext().EditContact(contact);
+            _phoneBookContext.EditContact(contact);
             return Redirect("/PhoneBook/ContactsList");
         }
 
-        //[HttpPut]
+        [HttpPost, Authorize(Roles = "Administrator,User")]
         public IActionResult ContactAdd(string firstName, string lastName, string thirdName, string phone, string address, string desc)
         {
             Contact contact = new Contact();
@@ -44,19 +64,20 @@ namespace CSWork20.Controllers
             contact.Phone = phone;
             contact.Address = address;
             contact.Desc = desc;
-            new PhoneBookContext().AddContact(contact);
+            _phoneBookContext.AddContact(contact);
             return Redirect("/PhoneBook/ContactsList");
         }
 
+        [HttpGet, Authorize(Roles = "Administrator,User")]
         public IActionResult ContactAdding()
         {
             return View();
         }
 
-        [HttpDelete]
+        [HttpDelete, Authorize(Roles = "Administrator")]
         public IActionResult ContactRemove(int id)
         {
-            new PhoneBookContext().RemoveContact(id);
+            _phoneBookContext.RemoveContact(id);
             return Redirect("/PhoneBook/ContactsList");
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace CSWork20.Enities
+﻿namespace CSWork21.Enities
 {
     public class Contact
     {

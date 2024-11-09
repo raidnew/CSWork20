@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace CSWork20.Views.Shared
+namespace CSWork21.Views.Shared
 {
     public class _LayoutModel : PageModel
     {
