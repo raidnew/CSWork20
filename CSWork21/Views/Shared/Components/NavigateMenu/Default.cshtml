@@ -1,0 +1,18 @@
+﻿<div>
+<a href="/PhoneBook/ContactsList">Вернуться с списку</a>
+@if (User.Identity.IsAuthenticated)
+{
+    <a href="/PhoneBook/ContactAdding">Добавить контакт</a>
+}
+
+@if(User.Identity.IsAuthenticated)
+{
+        <a href="/Account/Logout">Логаут (@User.Identity.Name)</a>
+}
+else
+{
+    <a href="/Account/Register">Регистрация</a>
+    <a href="/Account/Login">Логин</a>
+}
+
+</div>

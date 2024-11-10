@@ -1,6 +1,7 @@
 ﻿@using CSWork21.Enities;
 
 @{
+    ViewData["Title"] = "details";
     Layout = "_Layout";
 }
 
@@ -35,9 +36,8 @@
     </div>
 </div>
 
+@if (User.Identity.IsAuthenticated && User.Identity.AuthenticationType == "administrator")
+{
+    <a href="/PhoneBook/ContactEdit/@ViewBag.contact.Id">Редактировать</a>
+}
 
-<br>
-<a href="/PhoneBook/ContactEdit/@ViewBag.contact.Id">Редактировать</a>
-<br>
-
-<a href="/PhoneBook/ContactsList">Вернуться с списку</a>

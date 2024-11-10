@@ -32,14 +32,14 @@ namespace CSWork21.Controllers
             return View();
         }
 
-        [HttpGet, Authorize(Roles = "Administrator")]
+        [HttpGet, Authorize(Roles = "administrator")]
         public IActionResult ContactEdit(int id)
         {
             ViewBag.contact = _phoneBookContext.GetContactByID(id);
             return View();
         }
 
-        [HttpPost, Authorize(Roles = "Administrator")]
+        [HttpPost, Authorize(Roles = "administrator")]
         public IActionResult ContactEdit(int id, string firstName, string lastName, string thirdName, string phone, string address, string desc)
         {
             Contact contact = new Contact();
@@ -54,7 +54,7 @@ namespace CSWork21.Controllers
             return Redirect("/PhoneBook/ContactsList");
         }
 
-        [HttpPost, Authorize(Roles = "Administrator,User")]
+        [HttpPost, Authorize(Roles = "administrator,user")]
         public IActionResult ContactAdd(string firstName, string lastName, string thirdName, string phone, string address, string desc)
         {
             Contact contact = new Contact();
@@ -68,13 +68,13 @@ namespace CSWork21.Controllers
             return Redirect("/PhoneBook/ContactsList");
         }
 
-        [HttpGet, Authorize(Roles = "Administrator,User")]
+        [HttpGet, Authorize(Roles = "administrator,user")]
         public IActionResult ContactAdding()
         {
             return View();
         }
 
-        [HttpDelete, Authorize(Roles = "Administrator")]
+        [HttpDelete, Authorize(Roles = "administrator")]
         public IActionResult ContactRemove(int id)
         {
             _phoneBookContext.RemoveContact(id);

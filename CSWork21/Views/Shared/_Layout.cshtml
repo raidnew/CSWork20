@@ -1,14 +1,11 @@
 ﻿<head>
-    <title>Задание SkillBox C# 19</title>
+    <title>@ViewData["Title"]</title>
     <meta charset="utf-8">
     <link type="text/css" rel="stylesheet" href="~/css/style.css">
     <script src="~/js/script.js"></script>
 </head>
 
+<nav>
+    <div> @await Component.InvokeAsync("NavigateMenu") </div>
+</nav>
 @RenderBody()
-
-<div>
-    <a href="/Account/Register">Регистрация</a>
-    <a href="/Account/Login">Логин</a>
-    <a href="/Account/Logout">Логаут</a>
-</div>

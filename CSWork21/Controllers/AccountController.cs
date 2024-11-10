@@ -1,5 +1,6 @@
 ﻿using CSWork21.Auth;
 using CSWork21.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -49,7 +50,7 @@ namespace CSWork21.Controllers
             return View(authData);
         }
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpGet, Authorize]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
